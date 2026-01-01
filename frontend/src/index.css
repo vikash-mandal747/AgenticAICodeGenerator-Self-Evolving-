@@ -1,0 +1,93 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap');
+
+@layer base {
+  :root {
+    --background: 220 16% 8%;
+    --foreground: 220 14% 90%;
+
+    --card: 220 16% 11%;
+    --card-foreground: 220 14% 90%;
+
+    --popover: 220 16% 11%;
+    --popover-foreground: 220 14% 90%;
+
+    --primary: 200 100% 50%;
+    --primary-foreground: 220 16% 8%;
+
+    --secondary: 220 16% 16%;
+    --secondary-foreground: 220 14% 90%;
+
+    --muted: 220 16% 14%;
+    --muted-foreground: 220 10% 50%;
+
+    --accent: 200 100% 50%;
+    --accent-foreground: 220 16% 8%;
+
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 220 16% 18%;
+    --input: 220 16% 14%;
+    --ring: 200 100% 50%;
+
+    --radius: 0.5rem;
+
+    --code-bg: 220 16% 6%;
+    --code-border: 220 16% 14%;
+    --code-line-number: 220 10% 35%;
+    --code-selection: 200 100% 50%;
+
+    --glow-primary: 0 0 30px hsl(200 100% 50% / 0.2);
+    --glow-primary-hover: 0 0 40px hsl(200 100% 50% / 0.3);
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Inter', sans-serif;
+  }
+
+  .font-mono {
+    font-family: 'JetBrains Mono', monospace;
+  }
+}
+
+@layer components {
+  .code-panel {
+    @apply bg-[hsl(var(--code-bg))] border border-[hsl(var(--code-border))] rounded-lg overflow-hidden;
+  }
+
+  .code-header {
+    @apply bg-[hsl(var(--code-border))] px-4 py-2 flex items-center justify-between text-sm text-muted-foreground;
+  }
+
+  .code-content {
+    @apply p-4 font-mono text-sm overflow-auto max-h-[400px] whitespace-pre-wrap;
+  }
+
+  .glow-button {
+    box-shadow: var(--glow-primary);
+    transition: all 0.2s ease;
+  }
+
+  .glow-button:hover:not(:disabled) {
+    box-shadow: var(--glow-primary-hover);
+  }
+
+  .input-glow:focus {
+    box-shadow: 0 0 0 2px hsl(var(--background)), 0 0 0 4px hsl(var(--ring) / 0.3);
+  }
+}
+
+@layer utilities {
+  .animate-pulse-slow {
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+}

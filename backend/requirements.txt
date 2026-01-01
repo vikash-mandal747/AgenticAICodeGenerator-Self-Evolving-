@@ -1,0 +1,30 @@
+evoagentx
+python-dotenv
+openai
+litellm
+ddgs
+
+
+# evoagentx → Core Agentic AI framework.
+
+# You import LiteLLMConfig, LiteLLM, and other models from it.
+
+# Absolutely required. ✅
+
+# litellm → LLM wrapper that evoagentx internally uses.
+
+# Used for calling language models (completion() function, etc.).
+
+# Required. ✅
+
+# python-dotenv → For loading environment variables like GROQ_API_KEY.
+
+# You were using it to get API keys. ✅
+
+# openai → If any part of your agent backend uses OpenAI API directly.
+
+# Might be required by evoagentx or litellm depending on provider config. ✅
+
+# ddgs → DuckDuckGo search.
+
+# Only required if your agents do web search tasks. ✅ Optional (depends on instruction your agent executes).
