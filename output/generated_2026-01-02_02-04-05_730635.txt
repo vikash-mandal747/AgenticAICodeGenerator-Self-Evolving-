@@ -1,0 +1,6 @@
+```python
+# hello_world.py
+
+# Print "Hello, World!" to the console
+print("Hello, World!")
+```
