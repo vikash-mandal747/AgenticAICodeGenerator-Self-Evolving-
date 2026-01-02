@@ -6,10 +6,15 @@ from run_engine import run_agentic_system
 app = FastAPI()
 
 # CORS settings
+# origins = [
+#     "http://localhost:8080",  # your React dev server
+#     "http://127.0.0.1:8080",
+# ]
+
 origins = [
-    "http://localhost:8080",  # your React dev server
-    "http://127.0.0.1:8080",
+    "*"  # allow all origins for now; you can restrict later to your frontend URL
 ]
+
 
 app.add_middleware(
     CORSMiddleware,
@@ -19,8 +24,10 @@ app.add_middleware(
     allow_headers=["*"],    # allow all headers
 )
 
+
 class InstructionRequest(BaseModel):
     instruction: str
+
 
 @app.post("/generate")
 def generate_code(request: InstructionRequest):
