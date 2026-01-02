@@ -1,3 +1,4 @@
-def coder_agent(llm, plan):
-    prompt = f"Write code based on this plan:\n{plan}"
-    return llm.generate(prompt)
+from agentic_engine import create_llm
+
+def code_agent(prompt: str) -> str:
+    return create_llm(prompt)

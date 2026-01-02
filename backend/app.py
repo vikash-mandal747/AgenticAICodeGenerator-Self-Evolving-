@@ -1,22 +1,29 @@
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from run_engine import run_agentic_system
-from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()
 
-# allow frontend (Lovable)
+# CORS settings
+origins = [
+    "http://localhost:8080",  # your React dev server
+    "http://127.0.0.1:8080",
+]
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
-    allow_methods=["*"],
-    allow_headers=["*"],
+    allow_origins=origins,  # allow these origins
+    allow_credentials=True,
+    allow_methods=["*"],    # allow GET, POST, etc.
+    allow_headers=["*"],    # allow all headers
 )
 
-class Prompt(BaseModel):
+class InstructionRequest(BaseModel):
     instruction: str
 
 @app.post("/generate")
-def generate_code(prompt: Prompt):
-    result = run_agentic_system(prompt.instruction)
-    return {"output": result}
+def generate_code(request: InstructionRequest):
+    instruction = request.instruction
+    output = run_agentic_system(instruction)
+    return {"code": output}
